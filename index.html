@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Partner - Productivity & Self-Improvement Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Elements for Glassmorphism effect -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <!-- Seasonal Particles Container -->
+    <div id="seasonal-bg"
+        style="position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; overflow:hidden;">
+    </div>
+
+    <div class="app-container">
+        <!-- Top Bar -->
+        <header class="top-bar glass">
+            <div class="daily-thought">
+                <span class="material-icons-outlined quote-icon">format_quote</span>
+                <p id="daily-quote-text">Loading inspiration...</p>
+            </div>
+            <div class="settings-btn" id="open-settings">
+                <span class="material-icons-outlined">settings</span>
+            </div>
+        </header>
+
+        <!-- Main Canvas (6 Perfect Circles) -->
+        <main class="main-canvas">
+            <div class="circle-widget glass" id="mod-routine">
+                <span class="material-icons-outlined widget-icon">schedule</span>
+                <h3>Routine</h3>
+            </div>
+            <div class="circle-widget glass" id="mod-todo">
+                <span class="material-icons-outlined widget-icon">checklist</span>
+                <h3>To Do List</h3>
+            </div>
+            <div class="circle-widget glass" id="mod-imp">
+                <span class="material-icons-outlined widget-icon">priority_high</span>
+                <h3>IMP Tasks</h3>
+            </div>
+            <div class="circle-widget glass" id="mod-exams">
+                <span class="material-icons-outlined widget-icon">school</span>
+                <h3>Exams/Project</h3>
+            </div>
+            <div class="circle-widget glass" id="mod-result">
+                <span class="material-icons-outlined widget-icon">analytics</span>
+                <h3>Result</h3>
+            </div>
+            <div class="circle-widget glass" id="mod-reminder">
+                <span class="material-icons-outlined widget-icon">notifications_active</span>
+                <h3>Reminder</h3>
+                <span class="badge" id="reminder-badge" style="display:none;">0</span>
+            </div>
+        </main>
+
+        <!-- Bottom Dock (Sub options) -->
+        <nav class="bottom-dock glass">
+            <div class="dock-item" id="sub-games">
+                <span class="material-icons-outlined">sports_esports</span>
+                <span>Games</span>
+            </div>
+            <div class="dock-item" id="sub-movies">
+                <span class="material-icons-outlined">movie</span>
+                <span>Movies</span>
+            </div>
+            <div class="dock-item" id="sub-series">
+                <span class="material-icons-outlined">theaters</span>
+                <span>Series</span>
+            </div>
+            <div class="dock-item" id="sub-books">
+                <span class="material-icons-outlined">menu_book</span>
+                <span>Books</span>
+            </div>
+            <div class="dock-item" id="sub-news">
+                <span class="material-icons-outlined">article</span>
+                <span>News & Facts</span>
+            </div>
+            <div class="dock-item" id="sub-perfect">
+                <span class="material-icons-outlined">auto_awesome</span>
+                <span>Perfectionist</span>
+            </div>
+        </nav>
+
+        <!-- Modals Container (where we inject views) -->
+        <div id="modal-container" class="modal-container hidden">
+            <div class="modal-content glass">
+                <div class="modal-header">
+                    <h2 id="modal-title">Title</h2>
+                    <span class="material-icons-outlined close-btn" id="close-modal">close</span>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <!-- Dynamic Content gets injected here by main.js -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Modal for API Key -->
+        <div id="settings-modal" class="modal-container hidden">
+            <div class="modal-content glass settings-modal">
+                <div class="modal-header">
+                    <h2>Settings</h2>
+                    <span class="material-icons-outlined close-btn" id="close-settings">close</span>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Groq API Key (Required for AI features)</label>
+                        <input type="password" id="groq-api-key" placeholder="Enter API Key">
+                    </div>
+                    <button class="primary-btn" id="save-settings">Save</button>
+                    <p class="saved-msg" id="settings-msg" style="margin-top: 10px; color: var(--accent-color);"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
