@@ -831,15 +831,31 @@ body {
     gap: 1.5rem;
     padding: 1rem;
     width: 100%;
+    margin-bottom: 100px; /* Add space at the bottom so content isn't hidden behind the fixed dock */
 }
 
 /* 3. Scale down the Circle Widgets for smaller screens */
 @media (max-width: 600px) {
+    .main-canvas {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
     .circle-widget {
-        width: 180px;
+        width: 140px;
         /* Smaller size for mobile */
-        height: 180px;
+        height: 140px;
         margin: 0 auto;
+    }
+
+    .widget-icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .circle-widget h3 {
+        font-size: 0.9rem;
     }
 
     .top-bar {
@@ -862,6 +878,26 @@ body {
         width: 250px;
         height: 250px;
     }
+
+    /* Make Bottom Dock Horizontally Scrollable on Mobile */
+    .bottom-dock {
+        justify-content: flex-start !important;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 1rem;
+        padding: 0.8rem 1.5rem !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar for a cleaner mobile look */
+    .bottom-dock::-webkit-scrollbar {
+        display: none;
+    }
+
+    .dock-item {
+        flex: 0 0 auto; /* Prevent shrinking, allows horizontal scrolling */
+        padding: 0.5rem 1rem;
+    }
 }
 
 /* 4. Fix the Bottom Dock for mobile fingers */
@@ -873,6 +909,7 @@ body {
     margin-top: 0;
     padding: 0.8rem;
     justify-content: space-around;
+    z-index: 50; /* Stays above circles */
 }
 
 .particle {
